@@ -23,7 +23,7 @@ export const OrgSideBar = () => {
       <Link href={"/"}>
         <div className="flex items-center gap-x-2">
           <Image src="./logo.svg" alt="logo" height={60} width={60} />
-          <p className={cn("font-semibold text-2xl", font.className)}>board</p>
+          <p className={cn("font-semibold text-2xl", font.className)}>boardy</p>
         </div>
       </Link>
       <OrganizationSwitcher
