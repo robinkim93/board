@@ -1,7 +1,8 @@
 import { v } from "convex/values";
 import { mutation, query } from "./_generated/server";
 import { GenericMutationCtx, GenericQueryCtx } from "convex/server";
-import { DataModel } from "./_generated/dataModel";
+import { DataModel, Id } from "./_generated/dataModel";
+import { getAllOrThrow } from "convex-helpers/server/relationships";
 
 const images = [
   "/board-placeholder/1.svg",
@@ -70,6 +71,28 @@ export const get = query({
     let boards = [];
 
     const title = args.search as string;
+
+    /**
+     * TODO : favorite과 search 동시 사용해보기
+     */
+    if (args.favorites) {
+      const favoriteBoards = await ctx.db
+        .query("userFavorites")
+        .withIndex("by_user_org", (q) =>
+          q.eq("userId", identity.subject).eq("orgId", args.orgId)
+        )
+        .order("desc")
+        .collect();
+
+      const ids = favoriteBoards.map((board) => board.boardId);
+
+      const boardList = await getAllOrThrow(ctx.db, ids);
+
+      return boardList.map((board) => ({
+        ...board,
+        isFavorite: true,
+      }));
+    }
 
     if (title) {
       boards = await ctx.db
