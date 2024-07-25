@@ -18,6 +18,14 @@ export const Footer = ({
   onClick,
   disabled,
 }: FooterProps) => {
+  const onClickFavoriteButton: React.MouseEventHandler<HTMLButtonElement> = (
+    e
+  ) => {
+    e.stopPropagation();
+    e.preventDefault();
+    onClick();
+  };
+
   return (
     <div className="relative bg-white p-3">
       <p className="max-w-[calc(100%-20px)] text-[13px] truncate">{title}</p>
@@ -29,7 +37,7 @@ export const Footer = ({
           "absolute top-[14px] right-3 group opacity-0 group-hover:opacity-100 transition-opacity text-muted-foreground hover:text-blue-600",
           disabled && "cursor-not-allowed"
         )}
-        onClick={onClick}
+        onClick={onClickFavoriteButton}
       >
         <Star
           className={cn("w-4 h-4", isFavorite && "fill-blue-600 text-blue-600")}
