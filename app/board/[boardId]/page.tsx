@@ -1,14 +1,20 @@
-import { Info } from "./_components/info";
-import { Participants } from "./_components/participants";
-import { ToolBar } from "./_components/toolbar";
+import { Room } from "@/components/room";
+import { Canvas } from "./_components/canvas";
+import { Loading } from "./_components/loading";
 
-const BoardPage = () => {
+interface BoardPageProps {
+  params: {
+    boardId: string;
+  };
+}
+
+const BoardPage = ({ params }: BoardPageProps) => {
+  // if (true) return <Loading />;
+
   return (
-    <div className="w-full h-full relative bg-neutral-100">
-      <Info />
-      <Participants />
-      <ToolBar />
-    </div>
+    <Room fallback={<Loading />} roomId={params.boardId}>
+      <Canvas />
+    </Room>
   );
 };
 

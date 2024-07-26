@@ -54,7 +54,7 @@ export const create = mutation({
   },
 });
 
-export const get = query({
+export const getBoardList = query({
   args: {
     orgId: v.string(),
     search: v.optional(v.string()),
@@ -227,5 +227,14 @@ export const unFavorite = mutation({
     await ctx.db.delete(isExistFavorite._id);
 
     return;
+  },
+});
+
+export const getBoard = query({
+  args: { id: v.id("boards") },
+  handler: async (ctx, args) => {
+    const board = await ctx.db.get(args.id);
+
+    return board;
   },
 });

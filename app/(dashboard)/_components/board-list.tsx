@@ -15,7 +15,7 @@ interface BoardListProps {
 }
 
 export const BoardList = ({ orgId, query }: BoardListProps) => {
-  const boardList = useQuery(api.board.get, { orgId, ...query });
+  const boardList = useQuery(api.board.getBoardList, { orgId, ...query });
 
   /**
    * boardList 로딩에는 성공했으나, 데이터가 없다면 convex는 Null을 포함할 것임
