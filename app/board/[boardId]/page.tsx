@@ -9,11 +9,9 @@ interface BoardPageProps {
 }
 
 const BoardPage = ({ params }: BoardPageProps) => {
-  // if (true) return <Loading />;
-
   return (
     <Room fallback={<Loading />} roomId={params.boardId}>
-      <Canvas />
+      <Canvas boardId={params.boardId} />
     </Room>
   );
 };

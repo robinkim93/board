@@ -1,18 +1,17 @@
 "use client";
 
-import { useSelf } from "@liveblocks/react/suspense";
 import { Info } from "./info";
 import { Participants } from "./participants";
 import { ToolBar } from "./toolbar";
 
-export const Canvas = () => {
-  const info = useSelf((me) => me.info);
+interface CanvasProps {
+  boardId: string;
+}
 
-  console.log(info);
-
+export const Canvas = ({ boardId }: CanvasProps) => {
   return (
     <div className="w-full h-full relative bg-neutral-100">
-      <Info />
+      <Info boardId={boardId} />
       <Participants />
       <ToolBar />
     </div>
