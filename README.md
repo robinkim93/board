@@ -6,4 +6,4 @@
 <br/>
 배포 : Vercel
 
-배포주소 : [https://board-kvh7yfzqt-robinkim93s-projects.vercel.app/]
+배포주소 : https://board-go45ox0eo-robinkim93s-projects.vercel.app
