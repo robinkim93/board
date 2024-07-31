@@ -3,5 +3,7 @@
 프론트엔드 : nextjs, chadcn/ui, tailwind (CSS), zustand (State Management)
 <br/>
 백엔드 : convex (Open-source backend), clerk (Authentication API), liveblocks (Realtime API)
+<br/>
+배포 : Vercel
 
 배포주소 : [https://board-kvh7yfzqt-robinkim93s-projects.vercel.app/]
